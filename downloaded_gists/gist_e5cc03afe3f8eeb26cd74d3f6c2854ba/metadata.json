@@ -1,0 +1,12 @@
+{
+  "id": "e5cc03afe3f8eeb26cd74d3f6c2854ba",
+  "description": "A very minimal Javascript (ES5 & ES6) Middleware Pattern Implementation",
+  "created_at": "2021-12-11T08:45:39Z",
+  "updated_at": "2021-12-11T08:45:40Z",
+  "url": "https://gist.github.com/AimWhy/e5cc03afe3f8eeb26cd74d3f6c2854ba",
+  "files": [
+    "Middleware.js",
+    "MiddlewareES6.js",
+    "MiddlewareExample.js"
+  ]
+}

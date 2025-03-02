@@ -1,0 +1,17 @@
+  <script amp-story-dvh-polyfill>"use strict";if(!self.CSS||!CSS.supports||!CSS.supports("height:1dvh")){function e(){document.documentElement.style.setProperty("--story-dvh",innerHeight/100+"px","important")}addEventListener("resize",e,{passive:!0}),e()}</script>
+  
+  <style>
+  :root {
+    --story-page-vw: 1vw !important;
+    --story-page-vh: var(--story-dvh, 1vh) !important;
+    --story-page-vmin: min(var(--story-page-vw), var(--story-page-vh)) !important;
+    --story-page-vmax: max(var(--story-page-vw), var(--story-page-vh)) !important;
+    --story-100dvh: calc(var(--story-dvh, 1vh) * 100) !important;
+    --story-font-size: calc(2.5 * var(--story-page-vh, 8px)) !important;
+    font-size: var(--story-font-size);
+  }
+  
+  div {
+    height: calc(var(--story-100dvh) - 150px) !important;
+  }
+  </style>

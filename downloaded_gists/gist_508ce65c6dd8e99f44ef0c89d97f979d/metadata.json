@@ -1,0 +1,11 @@
+{
+  "id": "508ce65c6dd8e99f44ef0c89d97f979d",
+  "description": "iTerm2 + Oh My Zsh + Solarized color scheme + Source Code Pro Powerline + Font Awesome + [Powerlevel10k] - (macOS)",
+  "created_at": "2019-08-25T14:57:01Z",
+  "updated_at": "2019-08-25T14:57:01Z",
+  "url": "https://gist.github.com/AimWhy/508ce65c6dd8e99f44ef0c89d97f979d",
+  "files": [
+    "iterm2-solarized.md",
+    "iterm2-solarized_instructions.md"
+  ]
+}

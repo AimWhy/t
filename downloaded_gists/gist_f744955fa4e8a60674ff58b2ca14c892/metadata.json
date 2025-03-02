@@ -1,0 +1,11 @@
+{
+  "id": "f744955fa4e8a60674ff58b2ca14c892",
+  "description": "无描述",
+  "created_at": "2021-12-11T14:33:37Z",
+  "updated_at": "2021-12-11T14:33:37Z",
+  "url": "https://gist.github.com/AimWhy/f744955fa4e8a60674ff58b2ca14c892",
+  "files": [
+    "useReducerWithEmitEffect.js",
+    "useReducerWithEmitEffect.test.js"
+  ]
+}

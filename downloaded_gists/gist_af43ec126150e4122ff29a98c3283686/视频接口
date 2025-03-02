@@ -1,0 +1,62 @@
+➡️➡️➡️OKPG定制接口：
+ 
+饭太硬：https://gongdian.top/tvbox/fan.json
+潇洒哥：https://gongdian.top/tvbox/xiaosa.json
+王小二放牛娃：https://gongdian.top/tvbox/niu.json
+OK线路：https://gongdian.top/tvbox/ok.json
+ 
+注意：点击【首页】更改其他线路会导致下次启动OKPG无法播放直播哦~
+ 
+--------------------------------
+ 
+➡️➡️➡️其他空壳影视APP使用的接口：
+ 
+饭太硬：http://饭太硬.com/tv
+ 
+潇洒哥：
+单线：https://9877.kstore.space/FourD/api.json
+多仓：https://9877.kstore.space/FourDS/api.json（影视仓使用）
+ 
+王小二放牛娃：http://tvbox.王二小放牛娃.top
+ 
+OK线路：http://ok321.top/ok
+ 
+摸鱼儿：http://我不是.摸鱼儿.top
+
+
+
+❇️每日订阅器测速维护！
+☯️测速线路:  电信 移动 联通
+☯️测速协议：TLS已启用
+🇭🇰 香港节点 🇹🇼 台湾节点 🇸🇬 狮城节点
+🇯🇵 日本节点 🇺🇲 美国节点 🇰🇷 韩国节点
+❇️Vless高速节点订阅链接：
+🌐https://vsv.sosorg.us.kg/LCKG
+🌐https://vsv.sosorg.ggff.net/LCKG
+❇️Trojan高速节点订阅链接：
+🌐https://vst.sosorg.us.kg/LCKG
+🌐https://vst.sosorg.ggff.net/LCKG
+❇️Vless订阅器变量
+🌐SUB = vsv.sosorg.us.kg
+🌐SUB = vsv.sosorg.ggff.net
+❇️Trojan订阅器变量
+🌐SUB = vst.sosorg.us.kg
+🌐SUB = vst.sosorg.ggff.net
+❇️PROXYIP变量
+🌐PROXYIP = ts.hpc.tw
+❇️SOCKS5变量
+🌐SOCKS5 = 6bjal1m9:CMLiussss@s7.090227.xyz:39340
+❇️优选订阅生成器地址：
+🌐https://vsub.soscom.ggff.net
+❇️每天5次分别7时12时16时19时22时同步上传更新订阅器
+
+
+
+1.下载解压肥羊allinone(下载地址https://v1.mk/allinone)
+2.打开天光云影，选择推送，获取管理地址(如果是本手机建议把天光云影开启分屏或小窗模式)
+3.同局域网设备浏览器扫码或输入电视IP:10481网址进入管理界面(如果天光云影在本手机可使用127.0.0.1:10481)
+4.管理界面最下边找到肥羊设置然后选择上传AllInOne文件或输入天光云影所在设备的allinone文件所在路径(例如/storage/emulated/0/Download/allinone_linux_arm64_20241222090818/allinone_linux_arm64)然后点击推送即可推送路径
+5.管理界面找到云同步选择网络链接，然后输入json网络链接(例如https://gitee.com/szqcn/iptv/raw/master/tgyybf.json)点击推送(jion是批量导入肥羊直播源，JS，节目单源，图标源以及软件设置)
+6.切换到天光云影，找到设置并打开，找到云同步并打开，云端数据加载出云端版本等信息后，遥控器长按KO键(手机长按云端数据)即可
+
+

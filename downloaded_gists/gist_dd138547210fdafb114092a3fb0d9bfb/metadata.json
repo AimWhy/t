@@ -1,0 +1,10 @@
+{
+  "id": "dd138547210fdafb114092a3fb0d9bfb",
+  "description": "vue  router middleware",
+  "created_at": "2018-11-08T08:24:16Z",
+  "updated_at": "2018-11-08T08:24:17Z",
+  "url": "https://gist.github.com/AimWhy/dd138547210fdafb114092a3fb0d9bfb",
+  "files": [
+    "router.js"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "c7b3805cf43a97dbb9b81b2a99a8c7d1",
+  "description": "无描述",
+  "created_at": "2024-07-10T05:54:43Z",
+  "updated_at": "2024-07-10T05:54:43Z",
+  "url": "https://gist.github.com/AimWhy/c7b3805cf43a97dbb9b81b2a99a8c7d1",
+  "files": [
+    "convertBlobToBase64.ts"
+  ]
+}

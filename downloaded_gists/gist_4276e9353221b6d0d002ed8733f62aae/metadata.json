@@ -1,0 +1,12 @@
+{
+  "id": "4276e9353221b6d0d002ed8733f62aae",
+  "description": "无描述",
+  "created_at": "2019-10-14T08:39:15Z",
+  "updated_at": "2019-10-14T08:39:15Z",
+  "url": "https://gist.github.com/AimWhy/4276e9353221b6d0d002ed8733f62aae",
+  "files": [
+    "browser-weixin.js",
+    "server-sign.js",
+    "server-wx.js"
+  ]
+}

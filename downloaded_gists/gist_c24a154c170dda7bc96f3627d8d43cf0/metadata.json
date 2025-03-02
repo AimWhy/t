@@ -1,0 +1,14 @@
+{
+  "id": "c24a154c170dda7bc96f3627d8d43cf0",
+  "description": "Visual Studio Code Settings Sync Gist",
+  "created_at": "2018-04-16T02:58:55Z",
+  "updated_at": "2020-05-11T07:41:26Z",
+  "url": "https://gist.github.com/AimWhy/c24a154c170dda7bc96f3627d8d43cf0",
+  "files": [
+    "cloudSettings",
+    "extensions.json",
+    "keybindings.json",
+    "keybindingsMac.json",
+    "settings.json"
+  ]
+}

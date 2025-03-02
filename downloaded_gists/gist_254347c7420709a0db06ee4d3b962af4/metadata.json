@@ -1,0 +1,10 @@
+{
+  "id": "254347c7420709a0db06ee4d3b962af4",
+  "description": "List unique CSS properties for all DOM elements",
+  "created_at": "2021-12-11T13:31:11Z",
+  "updated_at": "2021-12-11T13:31:11Z",
+  "url": "https://gist.github.com/AimWhy/254347c7420709a0db06ee4d3b962af4",
+  "files": [
+    "findStyles.js"
+  ]
+}

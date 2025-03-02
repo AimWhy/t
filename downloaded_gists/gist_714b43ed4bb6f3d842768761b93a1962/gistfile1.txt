@@ -1,0 +1,91 @@
+<div class="ellipsis box">
+  <span class="content">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing
+    elit.
+  </span>
+</div>
+
+<style>
+  .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .box {
+    border: 1px solid gray;
+    padding: 10px;
+  }
+
+</style>
+const checkEllipsis = () => {
+  const { pLeft, pRight } = getPadding(box)
+  const horizontalPadding = pLeft + pRight
+  if (box.clientWidth <= content.offsetWidth+horizontalPadding ) {
+    result.textContent = '存在省略号'
+  } else {
+    result.textContent = '容器宽度足够，没有省略号了'
+  }
+}
+
+
+/*****/
+const getPadding = (el: HTMLElement) => {
+  const style = window.getComputedStyle(el, null)
+  const paddingLeft = Number.parseInt(style.paddingLeft, 10) || 0
+  const paddingRight = Number.parseInt(style.paddingRight, 10) || 0
+  const paddingTop = Number.parseInt(style.paddingTop, 10) || 0
+  const paddingBottom = Number.parseInt(style.paddingBottom, 10) || 0
+  return {
+    left: paddingLeft,
+    right: paddingRight,
+    top: paddingTop,
+    bottom: paddingBottom,
+  }
+}
+
+// 仅仅粘贴相关的
+const cellChild = (event.target as HTMLElement).querySelector('.cell') 
+const range = document.createRange()
+range.setStart(cellChild, 0)
+range.setEnd(cellChild, cellChild.childNodes.length)
+let rangeWidth = range.getBoundingClientRect().width
+let rangeHeight = range.getBoundingClientRect().height
+/** detail: https://github.com/element-plus/element-plus/issues/10790
+* What went wrong?
+* UI > Browser > Zoom, In Blink/WebKit, getBoundingClientRect() sometimes returns inexact values, probably due to lost
+precision during internal calculations. In the example above:
+* - Expected: 188
+* - Actual: 188.00000762939453
+*/
+const offsetWidth = rangeWidth - Math.floor(rangeWidth)
+if (offsetWidth < 0.001) {
+  rangeWidth = Math.floor(rangeWidth)
+}
+const offsetHeight = rangeHeight - Math.floor(rangeHeight)
+if (offsetHeight < 0.001) {
+  rangeHeight = Math.floor(rangeHeight)
+}
+
+
+const { top, left, right, bottom } = getPadding(cellChild) // 见下方
+const horizontalPadding = left + right
+const verticalPadding = top + bottom
+if (
+  rangeWidth + horizontalPadding > cellChild.offsetWidth ||
+  rangeHeight + verticalPadding > cellChild.offsetHeight ||
+  cellChild.scrollWidth > cellChild.offsetWidth
+) {
+  createTablePopper(
+    parent?.refs.tableWrapper,
+    cell,
+    cell.innerText || cell.textContent,
+    nextZIndex,
+    tooltipOptions
+  )
+}
+
+作者：嘉琪coder
+链接：https://juejin.cn/post/7262280335978741797
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

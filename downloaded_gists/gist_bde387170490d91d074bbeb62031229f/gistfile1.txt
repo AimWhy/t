@@ -1,0 +1,25 @@
+    <section class="person-card">
+        <a href="/" class="avatar"></a>
+        <div class="info">
+            <p class="person-card__name">Sb Coco</p>
+            <p class="person-card__desc s-multi inlineblock"><span>FE</span><span>UI</span><span>UX Designer</span><span>前端工程师</span></p>
+        </div>
+    </section>
+    
+    
+.s-multi {
+    width: 200px;
+    white-space: normal;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.inlineblock span {
+    display: inline-block;
+}
+
+
+https://segmentfault.com/a/1190000039399159

@@ -1,0 +1,50 @@
+
+button{
+  animation: throttle 1s step-end forwards;
+}
+button:active{
+  animation: none;
+}
+@keyframes throttle {
+  from {
+    pointer-events: none;
+  }
+  to {
+    pointer-events: all;
+  }
+}
+
+
+/*****/
+
+
+<button onclick="console.log('保存1')">我是“普通”保存</button>
+<button class="throttle" onclick="console.log('保存2')">我是“节流”保存</button>
+
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  margin: 0;
+  gap: 15px;
+  background: #f1f1f1;
+}
+button {
+  user-select: none;
+}
+.throttle {
+  opacity: 0.99;
+  transition: opacity 2s;
+}
+.throttle:not(:disabled):active {
+  opacity: 1;
+  transition: 0s;
+}
+
+
+document.addEventListener('transitionstart', function(ev){
+    ev.target.disabled = true
+})
+document.addEventListener('transitionend', function(ev){
+    ev.target.disabled = false
+})

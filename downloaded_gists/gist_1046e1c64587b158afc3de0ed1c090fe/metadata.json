@@ -1,0 +1,13 @@
+{
+  "id": "1046e1c64587b158afc3de0ed1c090fe",
+  "description": "无描述",
+  "created_at": "2019-09-27T02:14:49Z",
+  "updated_at": "2019-09-27T02:14:49Z",
+  "url": "https://gist.github.com/AimWhy/1046e1c64587b158afc3de0ed1c090fe",
+  "files": [
+    "dc2_dev.conf",
+    "init_apt.sh",
+    "init_yum.sh",
+    "nginx.conf"
+  ]
+}

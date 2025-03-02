@@ -1,0 +1,10 @@
+{
+  "id": "6ef4fad453ef1d82801dd3a4d57ddb95",
+  "description": "vue 方法 的竞态处理",
+  "created_at": "2019-11-04T12:53:34Z",
+  "updated_at": "2019-11-04T12:53:34Z",
+  "url": "https://gist.github.com/AimWhy/6ef4fad453ef1d82801dd3a4d57ddb95",
+  "files": [
+    "vue竞态.js"
+  ]
+}

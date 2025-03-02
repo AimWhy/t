@@ -1,0 +1,10 @@
+{
+  "id": "ddfe49a0d5850d2fbe618925d1bfe09e",
+  "description": "异步计算属性",
+  "created_at": "2018-11-27T11:42:43Z",
+  "updated_at": "2018-11-27T11:42:43Z",
+  "url": "https://gist.github.com/AimWhy/ddfe49a0d5850d2fbe618925d1bfe09e",
+  "files": [
+    "async-compute.js"
+  ]
+}

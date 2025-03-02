@@ -1,0 +1,10 @@
+{
+  "id": "45570dee1c1054c7ae0ead29110b8602",
+  "description": "Minimal safe Bash script template - see the article with full description: https://betterdev.blog/minimal-safe-bash-script-template/",
+  "created_at": "2021-12-11T16:15:17Z",
+  "updated_at": "2021-12-11T16:15:17Z",
+  "url": "https://gist.github.com/AimWhy/45570dee1c1054c7ae0ead29110b8602",
+  "files": [
+    "script-template.sh"
+  ]
+}

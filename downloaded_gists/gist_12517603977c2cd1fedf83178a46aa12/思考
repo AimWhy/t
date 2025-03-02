@@ -1,0 +1,262 @@
+竞态处理
+
+
+获取数据型
+
+effect
+export function effectFun (f) {
+  let context = { cleanup: null }
+  return function effectWrap (...args) {
+    if (typeof context.cleanup === 'function') {
+      context.cleanup()
+    }
+    args.push(context)
+ 
+ 
+    return f.apply(this, args)
+  }
+}
+ 
+ 
+checkPrice: effectFun(function(context){
+    const CancelToken = axios.CancelToken;
+    let cancel;
+    let cancelToken = new CancelToken(function executor(c) { cancel = c; })
+    context.cleanup = cancel
+    return axios.get('/user/12345', { cancelToken }).then(_ => {
+        context.cleanup = cancel
+        return _
+    });
+})
+变更数据型
+asyncQueue
+export class AsyncQueue {
+  constructor (...values) {
+    this.promise = new Promise(resolve => {
+      this.resolve = resolve
+    })
+ 
+ 
+    values.forEach(v => this.put(v))
+    this.count = values.length
+  }
+ 
+  put (value) {
+    let resolveNext = null
+    const nextPromise = new Promise(resolve => {
+      resolveNext = resolve
+    })
+ 
+    this.resolve({
+      value: Promise.resolve(value),
+      nextPromise,
+    })
+ 
+    this.resolve = resolveNext
+    this.count = this.count + 1
+  }
+ 
+  get () {
+    this.count = this.count - 1
+ 
+    const resultingPromise = this.promise.then(({ value }) => value)
+    const actualPromise = this.promise
+ 
+    this.promise = resultingPromise.then(() => actualPromise).then(({ nextPromise }) => nextPromise)
+ 
+    return resultingPromise
+  }
+}
+ 
+ 
+created() {
+    this.createQueue = new AsyncQueue();
+},
+methods: {
+    createDc2() {
+        this.createQueue.get().then(v => {
+            // 执行创建操作
+            API.create(...)
+            this.createDc2()
+        )
+    }
+}
+
+
+属性获取
+数据属性
+$delve
+
+组件属性
+validator.js
+
+方法调用
+flatry
+export function isPromise (obj) {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function'
+}
+ 
+ 
+function flatrySync (fn) {
+  try {
+    return [null, fn()]
+  } catch (err) {
+    return [err]
+  }
+}
+ 
+export default function flatry (fn) {
+  if (typeof fn !== 'function' && !isPromise(fn)) {
+    throw new Error('Argument must be a function or Promise')
+  }
+ 
+  var successFn = function (value) {
+    return [null, value]
+  }
+  var errorFn = function (err) {
+    return [err]
+  }
+ 
+  return isPromise(fn) ? fn.then(successFn, errorFn) : flatrySync(fn)
+}
+同步方法
+
+// Before
+let result = false;
+try {
+    result = mayThrowErrorSomeday()
+} catch (error) {
+    console.log('Error catched', error)
+}
+console.log('result', result);
+ 
+ 
+// After
+const [err, result] = flatry(mayThrowErrorSomeday);
+if (err) console.log('Error catched', err)
+console.log('result', result);
+异步方法
+
+// Before
+async asyncData({ app, error }) {
+  try {
+    const categories = (await app.$axios.$get('forum')).sections;
+    return { categories };
+  } catch (err) {
+    return error({ statusCode: err.statusCode });
+  }
+}
+ 
+ 
+// After
+async asyncData({ app, error }) {
+  const [err, res] = await flatry(app.$axios.$get('forum'));
+  if (err) return error({ statusCode: err.statusCode });
+  return { categories: res.sections };
+}
+接口错误信息
+接口层错误信息输出与控制
+        changeImageName({
+          cimg: [{ cimgUuid: item.cimgUuid, name: newName }]
+        }, {
+          headers,
+          skipErrMsg: true
+        })
+
+枚举信息处理
+
+数据控制
+依赖注入
+inject: ['s3Service']
+
+store存储
+结构规范 添加 clean/isGet 等属性
+abtest
+
+路由级拦截器
+组件级替换
+文案级显示
+
+
+组件报错
+render functions
+watcher callbacks
+lifecycle hooks
+component event handlers
+页面卡死：
+
+
+
+Vue.component('ErrorBoundary', {
+  data: () => ({ error: null }),
+  errorCaptured (err, vm, info) {
+    this.error = `${err.stack}\n\nfound in ${info} of component`
+    return false
+  },
+  render (h) {
+    if (this.error) {
+      return h('pre', { style: { color: 'red' }}, this.error)
+    }
+    // ignoring edge cases for the sake of demonstration
+    return this.$slots.default[0]
+  }
+})
+ 
+ 
+<error-boundary>
+  <another-component/>
+</error-boundary>
+ 
+ 
+Vue.mixin({
+  renderError (h, err) {
+    return h('pre', { style: { color: 'red' } }, err.stack)
+  },
+  errorCaptured (err, vm, info) {
+    // this.capturedErr = `${err.stack}\n\nfound in ${info} of component`
+    return false
+  },
+})
+
+
+dc2列表页可能存在的属性异常
+instance.spec.*
+
+instance.charge.*
+
+
+
+instance.isMonthlyCharge
+
+instance.eip.*
+
+
+
+instance.stopChargingEnabled
+
+instance.region.*
+
+instance.rootEbs.*
+
+
+
+instance.progressing
+
+instance.deviceName
+
+
+
+instance.
+
+instance.
+
+instance.
+
+instance.
+
+
+
+建议
+非后端返回数据， 如：组件使用数据、根据接口算出来的数据等  挂在一个指定的字段里 或 指定前缀      { charge: {}, ebs: {}, isMonthlyCharge: {} } =>   { charge: {}, ebs: {}, custom: { isMonthlyCharge: {} } }  =>   { charge: {}, ebs: {}, _isMonthlyCharge: {} } 
+
+方便区分、  自定义属性 整体向下传送 不要在解析里面单独属性 向下传

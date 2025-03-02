@@ -1,0 +1,10 @@
+{
+  "id": "5eb356de2629a7b5cbbead692de47b12",
+  "description": "无描述",
+  "created_at": "2022-02-26T15:58:56Z",
+  "updated_at": "2022-02-26T15:58:56Z",
+  "url": "https://gist.github.com/AimWhy/5eb356de2629a7b5cbbead692de47b12",
+  "files": [
+    "wrapPromiseWithTimeout.js"
+  ]
+}

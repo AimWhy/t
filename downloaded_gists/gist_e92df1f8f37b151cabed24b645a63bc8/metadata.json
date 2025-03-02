@@ -1,0 +1,10 @@
+{
+  "id": "e92df1f8f37b151cabed24b645a63bc8",
+  "description": "随机找几个人",
+  "created_at": "2019-11-04T06:40:42Z",
+  "updated_at": "2019-11-04T06:40:43Z",
+  "url": "https://gist.github.com/AimWhy/e92df1f8f37b151cabed24b645a63bc8",
+  "files": [
+    "random-member.js"
+  ]
+}

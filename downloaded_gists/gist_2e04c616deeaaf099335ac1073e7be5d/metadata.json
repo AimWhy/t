@@ -1,0 +1,10 @@
+{
+  "id": "2e04c616deeaaf099335ac1073e7be5d",
+  "description": "压缩图片",
+  "created_at": "2021-03-22T07:34:31Z",
+  "updated_at": "2021-03-22T07:34:31Z",
+  "url": "https://gist.github.com/AimWhy/2e04c616deeaaf099335ac1073e7be5d",
+  "files": [
+    "compressImg.js"
+  ]
+}

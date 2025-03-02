@@ -1,0 +1,88 @@
+import { useMemo, useContext, useState, useEffect } from "react";
+import ReactReconciler from "react-reconciler";
+
+const hostConfig = {
+    now: Date.now,
+    getRootHostContext: () => ({}),
+    prepareForCommit: () => { },
+    resetAfterCommit: () => { },
+    getChildHostContext: () => ({}),
+    shouldSetTextContent: () => true,
+    createInstance: () => { },
+    createTextInstance: () => { },
+    appendInitialChild: () => { },
+    appendChild: () => { },
+    finalizeInitialChildren: () => { },
+    supportsMutation: true,
+    appendChildToContainer: () => { },
+    prepareUpdate: () => true,
+    commitUpdate: () => { },
+    commitTextUpdate: () => { },
+    removeChild: () => { }
+};
+
+const reconciler = ReactReconciler(hostConfig);
+
+function render(reactElement) {
+    const container = reconciler.createContainer(null, false, false);
+    return reconciler.updateContainer(reactElement, container, null, null);
+}
+
+function Executor(props) {
+    var data = props.hook();
+    props.onUpdate(data);
+    return null;
+}
+
+class Container {
+    constructor(Context, selector) {
+        this.Context = Context;
+        this.selector = selector;
+        this.subscribers = new Set();
+        this.data = null;
+    }
+
+    notify() {
+        for (const subscriber of this.subscribers) {
+            subscriber(this.data);
+        }
+    }
+}
+
+export const useContextSelector = (Ctx, selector) => {
+    if (!selector) {
+        return useContext(Ctx);
+    }
+
+    let container = useMemo(() => {
+        const instance = new Container(Ctx, selector);
+        const update = val => {
+            instance.data = val;
+            instance.notify();
+        };
+        const hook = () => {
+            const context = useContext(Ctx);
+            return selector(context)
+        }
+
+        render(<Executor onUpdate={update} hook={hook} />)
+
+        return instance;
+    }, [ctx])
+
+    const [state, setState] = useState(() => container ? container.data : undefined);
+
+    useEffect(() => {
+        if (container) {
+            const subscriber = val => setState(val);
+
+            container.subscribers.add(subscriber);
+
+            return () => {
+                container.subscribers.delete(subscriber);
+            };
+        }
+    }, [container]);
+
+    return state;
+};

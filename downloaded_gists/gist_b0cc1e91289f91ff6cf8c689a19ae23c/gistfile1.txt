@@ -1,0 +1,15 @@
+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
+
+https://openrouter.ai/api/v1
+
+deepseek/deepseek-r1:free
+
+
+-------------------------------------------------------------------------------
+
+
+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
+
+https://openrouter.ai/api/v1
+
+deepseek/deepseek-chat:free

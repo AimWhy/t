@@ -1,0 +1,602 @@
+/*
+  spacing properties.css
+*/
+
+:root{
+  --space-none: 0px;
+  --space-xxs: 0.0625rem;
+  --space-xs: 0.125rem;
+  --space-sm: 0.25rem;
+  --space-md: 0.5rem;
+  --space-mdLg: 0.75rem;
+  --space-lg: 1rem;
+  --space-lgXl: 1.5rem;
+  --space-xl: 2rem;
+  --space-xlXXl: 3rem;
+  --space-xxl: 4rem;
+  --size-xxsmall: 159px;
+  --size-xsmall: 319px;
+  --size-small: 639px;
+  --size-medium: 1023px;
+  --size-large: 1199px;
+  --size-xlarge: 1439px;
+  --size-xxlarge: 1920px;
+}
+/*
+  reset.css
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-block-size: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  display: block;
+  max-inline-size: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+figcaption {
+  max-inline-size: 60ch;
+  overflow-wrap: break-word;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  max-inline-size: 100%;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+  center.css
+*/
+
+@property --maxWidth {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+[data-bedrock-center] {
+  box-sizing: content-box;
+
+  max-inline-size: var(--maxWidth, 100%);
+}
+[data-bedrock-center][data-bedrock-center] {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  margin-inline: auto;
+}
+
+[data-bedrock-center~="center-children"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-bedrock-center~="center-text"] {
+  text-align: center;
+}
+
+/*
+  column-drop.css
+*/
+
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --basis {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 159px;
+}
+
+[data-bedrock-column-drop] {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gutter, 0px);
+}
+
+[data-bedrock-column-drop] > * {
+  margin: 0;
+  flex-basis: var(--basis, 159px);
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+[data-bedrock-column-drop~="no-stretched-columns"] > * {
+  flex-grow: 0;
+}
+
+/*
+  columns.css
+*/
+
+/*
+  columns component
+*/
+
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --columns {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --span {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --offsetStart {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --offsetEnd {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+[data-bedrock-columns] {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--gutter, 0);
+  grid-template-columns: repeat(var(--columns, 1), 1fr);
+  grid-auto-flow: row;
+}
+
+[data-bedrock-columns] > * {
+  margin: 0;
+}
+
+[data-bedrock-columns="dense"] {
+  grid-auto-flow: row dense;
+}
+
+/*
+  column component
+*/
+
+[data-bedrock-column] {
+  grid-column: span min(var(--span, 1), var(--columns, 1));
+}
+
+[data-bedrock-column][style*="--offset"] {
+  display: contents;
+}
+
+[data-bedrock-column][style*="--offset"] > * {
+  grid-column: span min(var(--span, 1), var(--columns, 1));
+}
+
+[data-bedrock-column][style*="--offsetStart"]::before {
+  content: "";
+  grid-column: span min(var(--offsetStart, 1), var(--columns, 1));
+}
+
+[data-bedrock-column][style*="--offsetEnd"]::after {
+  content: "";
+  grid-column: span min(var(--offsetEnd, 1), var(--columns, 1));
+}
+
+/*
+  cover.css
+*/
+
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --minHeight {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100vh;
+}
+
+[data-bedrock-cover] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gutter, 0px);
+
+  min-block-size: var(--minHeight, 100vh);
+}
+
+[data-bedrock-cover] > * {
+  margin: 0;
+}
+
+[data-bedrock-cover] > [data-bedrock-cover-centered] {
+  margin-block-start: auto;
+  margin-block-end: auto;
+}
+
+[data-bedrock-cover="stretch-content"] > [data-bedrock-cover-centered] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-bedrock-cover="stretch-content"] > [data-bedrock-cover-centered] > * {
+  flex: 1;
+}
+
+/*
+  frame.css
+*/
+
+[data-bedrock-frame] {
+  box-sizing: border-box;
+  display: block;
+  inline-size: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-bedrock-frame] > * {
+  position: absolute;
+
+  inset-block-start: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+
+  inset-block: 0;
+  inset-inline: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-bedrock-frame] > :is(img, video) {
+  inline-size: 100%;
+  block-size: 100%;
+  size: 100%;
+
+  object-fit: cover;
+
+  object-position: var(--position, "50%");
+}
+
+[data-bedrock-frame][style*="--ratio"] {
+  aspect-ratio: var(--ratio);
+}
+
+/*
+  grid.css
+*/
+
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --minItemWidth {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 639px;
+}
+
+[data-bedrock-grid] {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--gutter, 0);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(var(--minItemWidth, 639px), 100%), 1fr)
+  );
+}
+
+[data-bedrock-grid] > * {
+  margin: 0;
+}
+
+/*
+  inline-cluster.css
+*/
+
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+[data-bedrock-inline-cluster] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter, 0px);
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+[data-bedrock-inline-cluster] > * {
+  margin: 0;
+}
+
+[data-bedrock-inline-cluster~="justify:start"] {
+  justify-content: flex-start;
+}
+[data-bedrock-inline-cluster~="justify:center"] {
+  justify-content: center;
+}
+[data-bedrock-inline-cluster~="justify:end"] {
+  justify-content: flex-end;
+}
+
+[data-bedrock-inline-cluster~="align:start"] {
+  align-items: flex-start;
+}
+[data-bedrock-inline-cluster~="align:center"] {
+  align-items: center;
+}
+[data-bedrock-inline-cluster~="align:end"] {
+  align-items: flex-end;
+}
+[data-bedrock-inline-cluster~="align:stretch"] {
+  align-items: stretch;
+}
+
+/*
+  inline.css
+*/
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --switchAt {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 0;
+}
+
+[data-bedrock-inline] {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--gutter, 0px);
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+[data-bedrock-inline] > * {
+  margin: 0;
+}
+
+[data-bedrock-inline][style*="--switchAt"] {
+  flex-wrap: wrap;
+}
+[data-bedrock-inline][style*="--switchAt"] > * {
+  min-inline-size: fit-content;
+  flex-basis: calc((var(--switchAt) - (100% - var(--gutter, 0px))) * 999);
+}
+
+[data-bedrock-inline~="justify:start"] {
+  justify-content: flex-start;
+}
+[data-bedrock-inline~="justify:center"] {
+  justify-content: center;
+}
+[data-bedrock-inline~="justify:end"] {
+  justify-content: flex-end;
+}
+
+[data-bedrock-inline~="align:start"] {
+  align-items: flex-start;
+}
+[data-bedrock-inline~="align:center"] {
+  align-items: center;
+}
+[data-bedrock-inline~="align:end"] {
+  align-items: flex-end;
+}
+[data-bedrock-inline~="align:stretch"] {
+  align-items: stretch;
+}
+
+[data-bedrock-inline~="stretch:all"] > * {
+  flex: 1;
+}
+[data-bedrock-inline~="stretch:start"] > :first-child {
+  flex: 1;
+}
+[data-bedrock-inline~="stretch:end"] > :last-child {
+  flex: 1;
+}
+
+[data-bedrock-inline~="stretch:0"] > :nth-child(1) {
+  flex: 1;
+}
+[data-bedrock-inline~="stretch:1"] > :nth-child(2) {
+  flex: 1;
+}
+[data-bedrock-inline~="stretch:2"] > :nth-child(3) {
+  flex: 1;
+}
+[data-bedrock-inline~="stretch:3"] > :nth-child(4) {
+  flex: 1;
+}
+[data-bedrock-inline~="stretch:4"] > :nth-child(5) {
+  flex: 1;
+}
+
+/*
+  reel.css
+*/
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+[data-bedrock-reel] {
+  display: flex;
+  gap: var(--gutter, 0);
+  overflow-x: scroll;
+  scroll-snap-type: none;
+}
+
+[data-bedrock-reel] > * {
+  margin: 0;
+}
+
+[data-bedrock-reel~="snapType:none"] {
+  scroll-snap-type: none;
+}
+[data-bedrock-reel~="snapType:proximity"] {
+  scroll-snap-type: x proximity;
+}
+[data-bedrock-reel~="snapType:mandatory"] {
+  scroll-snap-type: x mandatory;
+}
+
+[data-bedrock-reel] > * {
+  scroll-snap-align: start;
+}
+
+/*
+  split.css
+*/
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+[data-bedrock-split] {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--gutter, 0);
+  grid-template-columns: 1fr 1fr;
+}
+
+[data-bedrock-split] > * {
+  margin: 0;
+}
+
+[data-bedrock-split~="fraction:1/4"] {
+  grid-template-columns: 1fr 3fr;
+}
+
+[data-bedrock-split~="fraction:1/3"] {
+  grid-template-columns: 1fr 2fr;
+}
+
+[data-bedrock-split~="fraction:1/2"] {
+  grid-template-columns: 1fr 1fr;
+}
+
+[data-bedrock-split~="fraction:2/3"] {
+  grid-template-columns: 2fr 1fr;
+}
+
+[data-bedrock-split~="fraction:3/4"] {
+  grid-template-columns: 3fr 1fr;
+}
+
+[data-bedrock-split~="fraction:auto-start"] {
+  grid-template-columns: auto 1fr;
+}
+
+[data-bedrock-split~="fraction:auto-end"] {
+  grid-template-columns: 1fr auto;
+}
+
+/*
+  stack.css
+*/
+
+@property --gutter {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0;
+}
+
+[data-bedrock-stack] {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--gutter, 0);
+  align-content: start;
+}
+
+[data-bedrock-stack] > * {
+  margin: 0;
+}
+
+[data-bedrock-stack] > [data-bedrock-column] {
+  grid-column: span 1 / auto;
+}

@@ -1,0 +1,10 @@
+{
+  "id": "39dbe6b52ff4425551d9e70a1abb658c",
+  "description": "Remote PublicPath Modification",
+  "created_at": "2021-11-01T09:10:36Z",
+  "updated_at": "2021-11-01T09:10:36Z",
+  "url": "https://gist.github.com/AimWhy/39dbe6b52ff4425551d9e70a1abb658c",
+  "files": [
+    "MutateRuntimePlugin.js"
+  ]
+}

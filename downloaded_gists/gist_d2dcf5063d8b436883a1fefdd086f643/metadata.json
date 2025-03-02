@@ -1,0 +1,10 @@
+{
+  "id": "d2dcf5063d8b436883a1fefdd086f643",
+  "description": "将vue组件渲染到iframe中注入iframe中的window和document，样式、全局变量分离，可以在head中写入样式及脚本节点",
+  "created_at": "2019-10-19T02:05:15Z",
+  "updated_at": "2021-05-10T08:36:15Z",
+  "url": "https://gist.github.com/AimWhy/d2dcf5063d8b436883a1fefdd086f643",
+  "files": [
+    "Frame.js"
+  ]
+}

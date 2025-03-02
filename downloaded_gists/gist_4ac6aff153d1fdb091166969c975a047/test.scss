@@ -1,0 +1,51 @@
+// Z-index
+@zindex-spin            : 8;
+@zindex-affix           : 10;
+@zindex-back-top        : 10;
+@zindex-select          : 900;
+@zindex-modal           : 1000;
+@zindex-drawer          : 1000;
+@zindex-message         : 1010;
+@zindex-notification    : 1010;
+@zindex-tooltip         : 1060;
+@zindex-transfer        : 1060;
+@zindex-loading-bar     : 2000;
+@zindex-spin-fullscreen : 2010;
+
+
+
+$zindex-dropdown:                   1000 !default;
+$zindex-sticky:                     1020 !default;
+$zindex-fixed:                      1030 !default;
+$zindex-modal-backdrop:             1040 !default;
+$zindex-modal:                      1050 !default;
+$zindex-popover:                    1060 !default;
+$zindex-tooltip:                    1070 !default;
+
+
+
+  mobileStepper: 1000,
+  appBar: 1100,
+  drawer: 1200,
+  modal: 1300,
+  snackbar: 1400,
+  tooltip: 1500,
+
+
+
+
+@zindex-table-fixed: auto;
+@zindex-affix: 10;
+@zindex-back-top: 10;
+@zindex-badge: 10;
+@zindex-picker-panel: 10;
+@zindex-popup-close: 10;
+@zindex-modal: 1000;
+@zindex-modal-mask: 1000;
+@zindex-message: 1010;
+@zindex-notification: 1010;
+@zindex-popover: 1030;
+@zindex-dropdown: 1050;
+@zindex-picker: 1050;
+@zindex-tooltip: 1060;
+
