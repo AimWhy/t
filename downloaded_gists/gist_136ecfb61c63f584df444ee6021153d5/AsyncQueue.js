@@ -15,7 +15,7 @@ AsyncQueue.prototype.get = function get() {
     return result;
 };
 
-AsyncQueue.loopProcess = (callback) => {
+AsyncQueue.loopProcess = (callback, queue = ) => {
     let count = 0;
     const queue = new AsyncQueue();
 
